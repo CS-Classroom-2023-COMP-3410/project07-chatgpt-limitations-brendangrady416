@@ -1,0 +1,1 @@
+Chat GTP was very useful in the implementaion of this feature. The largest change made was the alternating of turns where the game would announce whose turn it was, keep the proper score, and only change turns after one player failed. I also made sure to store and display the scores of each player and use that to determine the winner when all cards were flipped. 
