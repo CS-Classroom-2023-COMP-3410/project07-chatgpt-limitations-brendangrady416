@@ -1,242 +1,168 @@
 /* 🎭 Unique Dance Animations 🎭 */
 @keyframes pivotDance {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-10deg); transform-origin: bottom center; }
-  50% { transform: rotate(10deg); transform-origin: bottom center; }
-  75% { transform: rotate(-10deg); transform-origin: bottom center; }
+  0%,100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
 }
-
 @keyframes bounceDance {
-  0%, 100% { transform: translateY(0); }
+  0%,100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
-
 @keyframes topPivotDance {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-10deg); transform-origin: top center; }
-  50% { transform: rotate(10deg); transform-origin: top center; }
-  75% { transform: rotate(-10deg); transform-origin: top center; }
+  0%,100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
 }
-
 @keyframes surpriseDance {
-  0%, 100% { transform: scale(1); }
+  0%,100% { transform: scale(1); }
   25% { transform: rotate(-10deg) scale(1.1); }
   50% { transform: rotate(10deg) scale(0.9); }
   75% { transform: rotate(-5deg) scale(1.05); }
 }
-
 @keyframes swingDance {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-15deg); transform-origin: center center; }
+  0%,100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
   50% { transform: rotate(15deg); }
   75% { transform: rotate(-15deg); }
 }
-
 @keyframes jitterDance {
-  0%, 100% { transform: translateX(0); }
+  0%,100% { transform: translateX(0); }
   25% { transform: translateX(-2px); }
   50% { transform: translateX(2px); }
   75% { transform: translateX(-2px); }
 }
-
 @keyframes spinDance {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
 @keyframes floatDance {
-  0%, 100% { transform: translateY(0); }
+  0%,100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
 }
-
-/* 🎭 Unique Fruit Animations (Dancing & Rotating) */
 @keyframes rotateDance {
-  0%, 100% { transform: rotate(0deg); }
+  0%,100% { transform: rotate(0deg); }
   50% { transform: rotate(360deg); }
 }
-
-@keyframes bounceDance {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
 @keyframes wiggleDance {
-  0%, 100% { transform: rotate(0deg); }
+  0%,100% { transform: rotate(0deg); }
   25% { transform: rotate(-15deg); }
   50% { transform: rotate(15deg); }
   75% { transform: rotate(-15deg); }
 }
 
-/* 🍉 Fruit Border Container */
+.pivot-dance { animation: pivotDance 0.6s infinite; }
+.bounce-dance { animation: bounceDance 0.6s infinite; }
+.top-pivot-dance { animation: topPivotDance 0.6s infinite; }
+.surprise-dance { animation: surpriseDance 0.6s infinite; }
+.swing-dance { animation: swingDance 0.8s infinite; }
+.jitter-dance { animation: jitterDance 0.3s infinite; }
+.spin-dance { animation: spinDance 1.5s linear infinite; }
+.float-dance { animation: floatDance 1.2s infinite; }
+.rotate-dance { animation: rotateDance 2s linear infinite; }
+.wiggle-dance { animation: wiggleDance 0.8s infinite; }
+
+
+/* Reset defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Make body fill the screen and hide scrollbars */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Hide scrollbars */
+  font-family: Arial, sans-serif;
+}
+
+/* 
+  Center everything with flexbox. 
+*/
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5dc; /* Beige */
+}
+
+/* Dancing Fruit Border around the edges (created by JS) */
 .fruit-border {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
-  padding: 20px;
-  box-sizing: border-box;
   pointer-events: none;
   z-index: 999;
 }
 
-/* 🍎 Individual Fruit Border Items */
 .fruit-item {
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
 }
 
-/* 🎮 Centered Game Container */
 .game-container {
   position: relative;
-  width: 80vw;
-  max-width: 600px;
-  height: auto;
-  max-height: 85vh;
+  width: min(calc(100vw - 120px), calc(100vh - 120px));
+  height: min(calc(100vw - 120px), calc(100vh - 120px));
   background: #fff;
-  border: 5px solid #333;
   border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-}
-
-/* 🃏 Game Grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start; 
   padding: 10px;
-}
-
-/* 🔘 Buttons */
-button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: #6fa3ef;
-  color: white;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-button:hover {
-    background: #5c8fd6;
-}
-/* 🎭 Assign Animations */
-.pivot-dance { animation: pivotDance 0.6s infinite; }
-.bounce-dance { animation: bounceDance 0.6s infinite; }
-.top-pivot-dance { animation: topPivotDance 0.6s infinite; }
-.surprise-dance { animation: surpriseDance 0.6s infinite; }
-.swing-dance { animation: swingDance 0.8s infinite ease-in-out; }
-.jitter-dance { animation: jitterDance 0.3s infinite; }
-.spin-dance { animation: spinDance 1.5s linear infinite; }
-.float-dance { animation: floatDance 1.2s infinite ease-in-out; }
-
-/* ✅ Matched cards stay green & fruit keeps dancing */
-.card.match .card-front, 
-.card.match .card-back {
-  background: green !important;
-}
-
-/* 🎊 Confetti Animation 🎊 */
-@keyframes confetti-fall {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-}
-
-/* Container for confetti */
-.confetti-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none; /* Prevents interaction */
-  overflow: hidden;
-  z-index: 9999;
-}
-
-/* Each confetti piece */
-.confetti {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: red; /* Default color */
-  opacity: 0.8;
-  animation: confetti-fall 3s linear infinite;
-}
-
-/* 🎨 Different colors for confetti */
-.confetti:nth-child(odd) { background: blue; }
-.confetti:nth-child(even) { background: yellow; }
-.confetti:nth-child(3n) { background: green; }
-.confetti:nth-child(4n) { background: orange; }
-.confetti:nth-child(5n) { background: pink; }
-
-
-
-/* General Styling */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f5f5dc; /* Beige background */
-  margin: 0;
-  padding: 20px;
-}
-
-.game-container {
-  width: 80%;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  background: #fff;
-  border: 2px solid #333;
-  border-radius: 10px;
+  z-index: 1000; 
 }
 
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .info {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+button {
+  margin: 0 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #6fa3ef;
+  color: white;
+}
+
+button:hover {
+  background: #5c8fd6;
 }
 
 .grid {
+  flex: 1; 
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
+/* Each card is a fraction of the grid cell. The aspect-ratio is 1. */
 .card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  max-width: 80px;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   position: relative;
   perspective: 1000px;
   cursor: pointer;
@@ -245,7 +171,6 @@ h1 {
 .card-inner {
   width: 100%;
   height: 100%;
-  position: relative;
   transform-style: preserve-3d;
   transition: transform 0.5s;
 }
@@ -267,44 +192,48 @@ h1 {
   transition: background 0.3s;
 }
 
+/* Front/Back design */
 .card-front {
-  background: #6fa3ef; /* Light blue */
+  background: #6fa3ef;
   color: white;
 }
 
 .card-back {
-  background: #d3d3d3; /* Light gray inside */
+  background: #d3d3d3;
   color: black;
   transform: rotateY(180deg);
-  display: flex;
 }
 
-@media (max-width: 768px) {
-  .game-container {
-    width: 95vw;
-    height: auto;
-    padding: 15px;
-  }
-  .grid {
-    gap: 5px;
-    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
-  }
-  .card {
-    max-width: 70px;
-  }
+/* Matched pairs stay green */
+.card.match .card-front,
+.card.match .card-back {
+  background: green !important;
 }
 
-@media (max-width: 480px) {
-  .game-container {
-    width: 98vw;
-    height: auto;
-    padding: 10px;
-  }
-  .grid {
-    gap: 3px;
-    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-  }
-  .card {
-    max-width: 60px;
-  }
+/* Confetti animations */
+.confetti-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px; height: 10px;
+  background: red;
+  opacity: 0.8;
+  animation: confetti-fall 3s linear infinite;
+}
+.confetti:nth-child(odd)  { background: blue; }
+.confetti:nth-child(even) { background: yellow; }
+.confetti:nth-child(3n)   { background: green; }
+.confetti:nth-child(4n)   { background: orange; }
+.confetti:nth-child(5n)   { background: pink; }
+
+@keyframes confetti-fall {
+  0%   { transform: translateY(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
 }

@@ -1,1 +1,1 @@
-This is not working 
+This challenge was much harder than the two player game. Chat GTP had a lot of trouble editing the CSS and JS files without removing several features such as the fruit border so I had to ask it for responsive code piece by piece and add in and edit small sections until the display could dynamically chnage while remaining within both the screen and the fruit border.  
